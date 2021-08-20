@@ -1,6 +1,7 @@
-import logo from './logo.svg';
-import React, {useEffect, useState } from 'react';
+//import logo from './logo.svg';
 import './styles/App.css';
+import './styles/Dictionary.css';
+import './styles/bootstrap.min.css';
 import DictionaryContainer from './components/dictionaryContainer';
 
 

@@ -1,11 +1,206 @@
+.search-query {
+    display: flex;
+    margin: 15px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+  }
+
+.search-query .fetch {
+    height: 47px;
+    width: 100%;
+    padding: 6px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(235, 235, 235)!important;
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+input.fetch:focus {
+    outline-width: 0;
+}
+.fetch-button {
+    background: transparent;
+    position: absolute;
+    width: 50px;
+    height: 45px;
+    margin-right: 31px;
+    margin-top: 1px;
+    right: 0;
+    font-size: 20px;
+    float: right;
+    border: none;
+    border-radius: 16px;
+}
+.fetch-button i {
+    background: transparent;
+    font-weight: 700;
+    padding-top: 8px;
+}
+
+.row{
+    justify-content: center;
+    transition: .3s;
+}
+
+.dictionary{
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.dictionary-items{
+    margin-bottom: 45px;
+}
+
+@media (min-width: 600px) and (max-width: 766px){
+    .dictionary{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .search-query{
+        margin-top: 33px;
+        margin-bottom: 36px;
+    }
+    .word{
+        font-size: 44px!important;
+    }
+}
+
+@media (min-width: 436px) and (max-width: 599px){
+    .dictionary{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .search-query{
+        margin-top: 33px;
+        margin-bottom: 36px;
+    }
+    .fetch{
+        font-size: 18px!important;
+    }
+    .word{
+        font-size: 40px!important;
+    }
+    .partofspeech{
+        font-size: 19px!important;
+    }
+    .definition{
+        font-size: 17px!important;
+    }
+    .example{
+        font-size: 16px!important;
+    }
+    .syns{
+        font-size: 15px!important;
+    }
+}
+
+@media (max-width: 400px){
+    .dictionary{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .search-query{
+        margin-top: 33px;
+        margin-bottom: 36px;
+    }
+    .fetch{
+        font-size: 18px!important;
+    }
+    .word{
+        font-size: 38px!important;
+    }
+    .pronunciation{
+        font-size: 15px!important;
+    }
+    .partofspeech{
+        font-size: 18px!important;
+    }
+    .definition{
+        font-size: 16px!important;
+    }
+    .example{
+        font-size: 15px!important;
+    }
+    .syns{
+        font-size: 14px!important;
+    }
+}
+
+.wrapword {
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    word-break: break-all;
+    white-space: normal;
+  }
+.hyphens{
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+-ms-hyphens: auto;
+hyphens: auto;
+}
+.syns{
+    text-transform: capitalize;
+	margin-top: 5px;
+}
+
 .word{
     font-weight: 600;
-    font-size: 50px;
+    font-size: 54px;
 }
 .example{
-    font-size: 18px;
+    font-family: Arial;
     font-style: italic;
+    font-size: 17px;
+	margin-top: 5px;
 }
 .partofspeech{
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 22px;
+    color: cornflowerblue;
+    text-transform: uppercase;
+}
+.pronunciation{
+    font-style: italic;
+    font-weight: 500;
+    color: #000;
+}
+.audio-play-btn{
+    clip-path: circle();
+    height: 34px;
+    bottom: 0px;
+    background-color: transparent;
+    border-color: transparent;
+    transition: .2s;
+}
+.audio-play-btn:hover{
+    background-color: rgb(235, 235, 235);
+}
+.audio-play-btn i{
+    color: cornflowerblue!important;
+    font-size: 26px;
+    margin-top: 2px;
+}
+.meanings {
+    font-family: Arial, sans-serif;
+}
+.not-found {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: italic;
+}
+.definition{
+    font-size: 18px;
+    font-weight: 500;
 }

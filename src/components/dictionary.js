@@ -1,39 +1,16 @@
 import React, {useEffect,useState} from 'react';
-import '../styles/Dictionary.css';
 
-const Dictionary = ({wrd,meaning,audio_info}) => {
+const Dictionary = ({meaning}) => {
     const [meanings, setMeanings] = useState([])
-    const [audio, setAudio] = useState([]);
+
 
     useEffect(() => {
-        setAudio(audio);
-        }, [audio]);
-
-    useEffect(() => {
-    setMeanings(meaning);
+        setMeanings(meaning);
     }, [meaning]);
-
-    const getAudio = async (e) => {
-        //setLoader(true)
-        e.preventDefault();
-        const response = await fetch(`https://the-words.herokuapp.com/api/v2/audio/en-US/entries/`, {
-          method: 'GET',
-          headers: {
-            'Origin': 'http://localhost/3000',
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        });
-        
-        const data = await response.json();
-        setAudio([audio])
-        //setLoader(false)
-      }
 
     if (meanings) {
     return(
-        <div className="dict">
-            <p className="word">{wrd}</p>
+        <div className="dictionary-items">
             <div className="meanings">
                 {meanings.map((ele, index) => (
                     <Meaning
@@ -42,17 +19,17 @@ const Dictionary = ({wrd,meaning,audio_info}) => {
                         def = {ele.definitions}
                     />
                 ))}
-            
             </div>
         </div>
     );
     }
     else {
         return(
-            <div className="dict">
-                <p className="word">{wrd}</p>
+            <div className="dictionary-items">
                 <div className="meanings">
-                    Sorry! Couldn't find that...
+                    <div className="not-found">
+                        Sorry, I Couldn't find that...!
+                    </div>
                 </div>
             </div>
         );
@@ -85,17 +62,24 @@ const Definitions = ({def, example, syns}) => {
     }, [syns]);
     if (synonyms)
     {
+        var synss = "";
+        for (var i=0; i<synonyms.length; i++){
+            if (synss === ""){
+                synss += synonyms[i];
+            }
+            else {
+                synss += ", " + synonyms[i];
+            }
+        }
         return(
             <ul>
-                <li className="definition">
-                    {def}
-                    <div className="example">{example === "" || example === " " ? ("") : ("Example: " + example)}</div>
-
-                    <div className="syns">
+                <li className="definition-items">
+                    <div className="definition">{def}</div>
+                    <div className="example">{example === "" || example === " " || typeof(example) === "undefined" ? 
+                    ("") : ("Example: " + example)}</div>
+                    <div className="syns hyphens">
                     Synonyms:&nbsp;
-                        {synonyms.map((synonym, index) => (
-                            <span key={synonym}>{synonym},&nbsp;</span>
-                        ))}
+                        {synss}
                     </div>
                 </li>
             </ul>
@@ -106,7 +90,8 @@ const Definitions = ({def, example, syns}) => {
             <ul>
             <li className="definition">
                 {def}
-                <div className="example">{example === "" || example === " " ? ("") : ("Example: " + example)}</div>
+                <div className="example">{example === "" || example === " " || typeof(example) === "undefined" ? 
+                ("") : ("Example: " + example)}</div>
             </li>
             </ul>
         )   
